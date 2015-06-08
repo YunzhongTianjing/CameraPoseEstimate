@@ -6,9 +6,10 @@ gen/
 ic_launcher-web.png
 proguard-project.txt
 project.properties
+libs/
+obj/
 
 !res/
 !src/
 !AndroidManifest.xml
-!libs/
 !jni/
