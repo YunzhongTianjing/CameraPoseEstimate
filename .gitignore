@@ -11,3 +11,4 @@ project.properties
 !src/
 !AndroidManifest.xml
 !libs/
+!jni/
