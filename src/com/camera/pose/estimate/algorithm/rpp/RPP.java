@@ -1,4 +1,4 @@
-package com.camera.pose.estimate.rpp;
+package com.camera.pose.estimate.algorithm.rpp;
 
 import java.util.Arrays;
 
