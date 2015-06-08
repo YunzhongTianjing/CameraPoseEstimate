@@ -14,13 +14,18 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.camera.pose.estimate.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.camera.pose.estimate.test.AngleTestActivity"
+            android:label="@string/title_activity_angle_test"
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 

@@ -4,5 +4,6 @@
     <string name="app_name">CameraPoseEstimate</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_angle_test">AngleTestActivity</string>
 
 </resources>

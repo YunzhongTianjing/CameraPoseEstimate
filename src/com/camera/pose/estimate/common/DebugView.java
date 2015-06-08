@@ -3,6 +3,7 @@ package com.camera.pose.estimate.common;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -27,6 +28,12 @@ public class DebugView extends View {
 	}
 
 	private final Paint mPaint = new Paint();
+	private Bitmap mBitmap;
+
+	public DebugView setBitmap(Bitmap bmp) {
+		this.mBitmap = bmp;
+		return this;
+	}
 
 	private void initialzie(Context context) {
 		mPaint.setColor(Color.RED);
@@ -35,11 +42,22 @@ public class DebugView extends View {
 
 	@Override
 	protected void onDraw(Canvas canvas) {
-		Point next = null;
-		while (null != (next = pointsToDraw.poll())) {
-			mPaint.setStrokeWidth(next.size);
-			mPaint.setColor(next.color);
-			canvas.drawPoint(next.x, next.y, mPaint);
+		if (null != mBitmap)
+			canvas.drawBitmap(mBitmap, 0, 0, null);
+
+		Point nextPoint = null;
+		while (null != (nextPoint = pointsToDraw.poll())) {
+			mPaint.setStrokeWidth(nextPoint.size);
+			mPaint.setColor(nextPoint.color);
+			canvas.drawPoint(nextPoint.x, nextPoint.y, mPaint);
+		}
+
+		Point[] nextLine = null;
+		while (null != (nextLine = linesToDraw.poll())) {
+			mPaint.setStrokeWidth(nextLine[0].size);
+			mPaint.setColor(nextLine[0].color);
+			canvas.drawLine(nextLine[0].x, nextLine[0].y, nextLine[1].x,
+					nextLine[1].y, mPaint);
 		}
 	}
 
@@ -47,6 +65,15 @@ public class DebugView extends View {
 
 	public DebugView point(double x, double y, int color, int size) {
 		pointsToDraw.add(new Point(x, y, color, size));
+		return this;
+	}
+
+	private ConcurrentLinkedQueue<Point[]> linesToDraw = new ConcurrentLinkedQueue<Point[]>();
+
+	public DebugView line(double x1, double y1, double x2, double y2,
+			int color, int width) {
+		linesToDraw.add(new Point[] { new Point(x1, y1, color, width),
+				new Point(x2, y2, color, width) });
 		return this;
 	}
 

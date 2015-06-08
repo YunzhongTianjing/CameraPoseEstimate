@@ -1,12 +1,14 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.camera.pose.estimate.MainActivity" >
 
-    <com.camera.pose.estimate.common.DebugView
-        android:id="@+id/debugView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="coplanarPOSIT_AngleTest"
+        android:text="CoplanarPOSIT_AngleTest"
+        android:textSize="20dp" />
 
-</RelativeLayout>
+</LinearLayout>
