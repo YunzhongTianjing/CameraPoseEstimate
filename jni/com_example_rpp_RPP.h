@@ -12,7 +12,7 @@ extern "C" {
  * Method:    xxx
  * Signature: ([D[D[D[DI[[DZDDILcom/example/rpp/RPP/PoseResult;)V
  */
-JNIEXPORT void JNICALL Java_com_camera_pose_estimate_rpp_RPP_estimate
+JNIEXPORT void JNICALL Java_com_camera_pose_estimate_algorithm_rpp_RPP_estimate
   (JNIEnv *, jclass, jdoubleArray, jdoubleArray, jdoubleArray, jdoubleArray, jint, jobjectArray, jboolean, jdouble, jdouble, jint, jobject);
 
 #ifdef __cplusplus

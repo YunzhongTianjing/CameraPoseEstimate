@@ -8,7 +8,7 @@
 #define LOGD(fmt, args...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, fmt, ##args)
 #define LOGE(fmt, args...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, fmt, ##args)
 
-void Java_com_camera_pose_estimate_rpp_RPP_estimate(JNIEnv * env, jclass clazz,
+void Java_com_camera_pose_estimate_algorithm_rpp_RPP_estimate(JNIEnv * env, jclass clazz,
 		jdoubleArray jPrincipalPoint, jdoubleArray jFocalLength,
 		jdoubleArray jModelPoints, jdoubleArray jImagePoints, jint jPointsNum,
 		jobjectArray jR_init, jboolean jEstimateByR_init, jdouble jEpsilon,
@@ -49,7 +49,7 @@ void Java_com_camera_pose_estimate_rpp_RPP_estimate(JNIEnv * env, jclass clazz,
 
 	int pointsNum = 4;/*ignore jPointsNum , always four*/
 	rpp_mat R_init;/*not use , ignore jR_init*/
-	bool estimate_R_init = false;/*ignore jEstimateByR_init , always false*/
+	bool estimate_R_init = true;/*ignore jEstimateByR_init , always true*/
 
 	robustPlanarPose(resultError, resultR, resultT, cc, fc, modelPoints,
 			imagePoints, pointsNum, R_init, estimate_R_init, jEpsilon,

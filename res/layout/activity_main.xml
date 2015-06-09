@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.camera.pose.estimate.MainActivity" >
 
     <Button
@@ -9,6 +10,13 @@
         android:layout_height="wrap_content"
         android:onClick="coplanarPOSIT_AngleTest"
         android:text="CoplanarPOSIT_AngleTest"
+        android:textSize="20dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="rpp_AngleTest"
+        android:text="RPP_AngleTest"
         android:textSize="20dp" />
 
 </LinearLayout>

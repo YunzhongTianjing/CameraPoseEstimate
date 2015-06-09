@@ -29,6 +29,7 @@ public class DebugView extends View {
 
 	private final Paint mPaint = new Paint();
 	private Bitmap mBitmap;
+	private String mText;
 
 	public DebugView setBitmap(Bitmap bmp) {
 		this.mBitmap = bmp;
@@ -56,9 +57,18 @@ public class DebugView extends View {
 		while (null != (nextLine = linesToDraw.poll())) {
 			mPaint.setStrokeWidth(nextLine[0].size);
 			mPaint.setColor(nextLine[0].color);
-			canvas.drawLine(nextLine[0].x, nextLine[0].y, nextLine[1].x,
-					nextLine[1].y, mPaint);
+			canvas.drawLine(nextLine[0].x, nextLine[0].y, nextLine[1].x, nextLine[1].y, mPaint);
 		}
+
+		mPaint.setColor(Color.BLACK);
+		mPaint.setTextSize(20);
+		if (null != mText)
+			canvas.drawText(mText, 20, 20, mPaint);
+	}
+
+	public DebugView text(String text) {
+		this.mText = text;
+		return this;
 	}
 
 	private ConcurrentLinkedQueue<Point> pointsToDraw = new ConcurrentLinkedQueue<Point>();
@@ -70,10 +80,8 @@ public class DebugView extends View {
 
 	private ConcurrentLinkedQueue<Point[]> linesToDraw = new ConcurrentLinkedQueue<Point[]>();
 
-	public DebugView line(double x1, double y1, double x2, double y2,
-			int color, int width) {
-		linesToDraw.add(new Point[] { new Point(x1, y1, color, width),
-				new Point(x2, y2, color, width) });
+	public DebugView line(double x1, double y1, double x2, double y2, int color, int width) {
+		linesToDraw.add(new Point[] { new Point(x1, y1, color, width), new Point(x2, y2, color, width) });
 		return this;
 	}
 
