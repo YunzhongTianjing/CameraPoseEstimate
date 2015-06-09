@@ -21,21 +21,18 @@ public class AngleTestActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_angle_test);
 		mDebugView = (DebugView) findViewById(R.id.debugView);
-		mDebugView.point(640, 0, Color.BLUE, 10).point(640, 480, Color.BLACK,
-				10);
+		mDebugView.point(640, 0, Color.BLUE, 10).point(640, 480, Color.BLACK, 10);
 
 		changeImage(null);
 	}
 
 	private int clickCounts;
 
-	private POSITTest positTest = new POSITTest();
+	private POSITTest positTest = new POSITTest(AngleTestData.WIDTH, AngleTestData.HEIGHT, AngleTestData.FEATURE_POINTS);
 
 	public void changeImage(View view) {
-		final Bitmap bmp = getBitmapWithNoScale(AngleTest.IMG_IDS[clickCounts
-				% AngleTest.TEST_SIZE]);
-		positTest.estimate(AngleTest.FEATURE_POINTS[clickCounts
-				% AngleTest.TEST_SIZE], mDebugView);
+		final Bitmap bmp = getBitmapWithNoScale(AngleTestData.IMG_IDS[clickCounts % AngleTestData.TEST_SIZE]);
+		positTest.check(clickCounts % AngleTestData.TEST_SIZE, mDebugView);
 		clickCounts++;
 		mDebugView.setBitmap(bmp).showDebug();
 	}

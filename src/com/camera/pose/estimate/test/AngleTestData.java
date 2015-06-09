@@ -3,7 +3,10 @@ package com.camera.pose.estimate.test;
 import com.camera.pose.estimate.R;
 import com.camera.pose.estimate.algorithm.coplanar_posit.Point;
 
-public class AngleTest {
+public class AngleTestData {
+	public static final int WIDTH = 640;
+	public static final int HEIGHT = 480;
+	
 	public static final int[] IMG_IDS = { R.drawable.angle30,
 			R.drawable.angle45, R.drawable.angle60, R.drawable.angle5015,
 			R.drawable.angle6030 };
